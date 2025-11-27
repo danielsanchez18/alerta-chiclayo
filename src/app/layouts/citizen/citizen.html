@@ -1,0 +1,72 @@
+<section class="h-dvh flex flex-col">
+
+  <div class="h-full overflow-y-auto">
+    <router-outlet />
+  </div>
+
+
+  <!-- Links Navigation -->
+  <div class="grid grid-cols-5 py-5 items-center border-t">
+    <a href="" class="">
+      <button class="flex flex-col items-center justify-center gap-1 w-full hover:bg-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
+          class="size-5 text-white mr-0.5">
+          <path fill="currentColor" fill-rule="evenodd"
+            d="M20.568 2.812a8.25 8.25 0 0 1 6.864 0c7.766 3.556 13.551 8.642 16.337 11.386c1.502 1.479 2.305 3.451 2.418 5.486c.138 2.507.313 6.573.313 11.159c0 3.236-.087 6.212-.187 8.564a7.145 7.145 0 0 1-6.927 6.854c-3.478.12-8.647.239-15.386.239s-11.908-.12-15.386-.239a7.145 7.145 0 0 1-6.927-6.854a204 204 0 0 1-.187-8.564c0-4.586.175-8.652.313-11.159c.113-2.035.916-4.007 2.418-5.486c2.786-2.744 8.572-7.83 16.337-11.386M16 36a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4z"
+            clip-rule="evenodd" />
+        </svg>
+        <p class="text-sm font-medium">Inicio</p>
+      </button>
+    </a>
+
+    <a href="" class="">
+      <button class="flex flex-col items-center justify-center gap-1 w-full hover:bg-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="size-5 text-white">
+          <path fill="currentColor"
+            d="M7.5 9a2 2 0 0 1 2 2c0 .965-.592 1.73-1.411 2.23C7.27 13.728 6.175 14 5 14s-2.27-.272-3.089-.77C1.091 12.73.5 11.965.5 11a2 2 0 0 1 2-2zm6.653.008A1.5 1.5 0 0 1 15.5 10.5c0 .771-.47 1.409-1.102 1.83c-.635.424-1.485.67-2.398.67c-.7 0-1.36-.146-1.917-.403c.258-.463.416-.996.416-1.597c0-.759-.284-1.45-.749-1.979q.122-.02.25-.021h4zM5 2.5A2.75 2.75 0 1 1 5 8a2.75 2.75 0 0 1 0-5.5m7.002.997a2.252 2.252 0 1 1 0 4.503a2.252 2.252 0 0 1 0-4.503" />
+        </svg>
+        <p class="text-sm font-medium">Comunidad</p>
+      </button>
+    </a>
+
+    <div class="flex items-center justify-center">
+      <button class="size-12 rounded-full bg-primary flex items-center justify-center shadow-primary/30 hover:shadow-primary/40">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-plus-icon lucide-plus text-black size-7">
+          <path d="M5 12h14" />
+          <path d="M12 5v14" />
+        </svg>
+      </button>
+    </div>
+
+    <a href="" class="">
+      <button class="flex flex-col items-center justify-center gap-1 w-full hover:bg-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="size-5 text-white">
+          <g fill="none">
+            <path
+              d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" />
+            <path fill="currentColor"
+              d="m13.299 3.148l8.634 14.954a1.5 1.5 0 0 1-1.299 2.25H3.366a1.5 1.5 0 0 1-1.299-2.25l8.634-14.954c.577-1 2.02-1 2.598 0M12 15a1 1 0 1 0 0 2a1 1 0 0 0 0-2m0-7a1 1 0 0 0-.993.883L11 9v4a1 1 0 0 0 1.993.117L13 13V9a1 1 0 0 0-1-1" />
+          </g>
+        </svg>
+        <p class="text-sm font-medium">Denuncias</p>
+      </button>
+    </a>
+
+    <a href="" class="">
+      <button class="flex flex-col items-center justify-center gap-1 w-full hover:bg-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="size-5 text-white">
+          <g fill="none" fill-rule="evenodd">
+            <path
+              d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+            <path fill="currentColor"
+              d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2M8.5 9.5a3.5 3.5 0 1 1 7 0a3.5 3.5 0 0 1-7 0m9.758 7.484A7.99 7.99 0 0 1 12 20a7.99 7.99 0 0 1-6.258-3.016C7.363 15.821 9.575 15 12 15s4.637.821 6.258 1.984" />
+          </g>
+        </svg>
+        <p class="text-sm font-medium">Perfil</p>
+      </button>
+    </a>
+  </div>
+
+</section>
