@@ -1,10 +1,31 @@
 <!-- General Section -->
 <section class="grid gap-y-10 py-5">
 
+  <!-- Alertas de Emergencia -->
+  <div class="max-w-full">
+    <div class="flex items-center">
+      <!-- Title -->
+      <h2 class="text-xl font-medium mb-5">Alertas de Emergencia</h2>
+      <a href="/comunidad/:id/alertas" class="ml-auto bg-primary px-3 py-2 text-xs uppercase font-semibold rounded-full tracking-widest">VER MÁS</a>
+    </div>
+
+    <!-- Grid Posts -->
+    <div class="">
+      <component-citizen-alerts-card />
+      <component-citizen-alerts-card />
+      <component-citizen-alerts-card />
+    </div>
+  </div>
+
+
+  <!-- Separador -->
+  <div class="h-px w-full bg-white/60"></div>
+
+
   <!-- Publicaciones recientes -->
-  <div>
+  <div class="max-w-full">
     <!-- Title -->
-    <h2 class="text-xl font-medium mb-5">Publicaciones recientes</h2>
+    <h2 class="text-xl font-medium mb-5">Publicaciones de la comunidad</h2>
 
     <!-- Grid Posts -->
     <div class="flex items-center gap-x-5 overflow-x-auto scrollbar-hide">
@@ -14,11 +35,13 @@
     </div>
   </div>
 
+
   <!-- Separador -->
   <div class="h-px w-full bg-white/60"></div>
 
+
   <!-- Noticias recientes -->
-  <div>
+  <div class="max-w-full">
     <!-- Title -->
     <h2 class="text-xl font-medium mb-5">Noticias recientes</h2>
 
@@ -29,8 +52,6 @@
       <component-citizen-news-card />
     </div>
   </div>
-
-  <!-- Alertas de Emergencia -->
 
 
 </section>
