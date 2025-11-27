@@ -1,12 +1,40 @@
 <section class="h-dvh flex flex-col">
 
-  <div class="h-full overflow-y-auto">
+  <!-- Breadcrumb -->
+  <div class="flex w-full items-center justify-between py-4 gap-x-5 px-5">
+
+    <!-- Menu -->
+    <button class="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-menu-icon lucide-menu size-5 text-white">
+        <path d="M4 5h16" />
+        <path d="M4 12h16" />
+        <path d="M4 19h16" />
+      </svg>
+    </button>
+
+    <!-- Title -->
+    <p class="text-sm font-semibold uppercase tracking-widest">Alerta Chiclayo</p>
+
+    <!-- Notifications -->
+    <div>
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="size-5 text-white">
+          <path fill="currentColor"
+            d="M8.352 20.242A4.63 4.63 0 0 0 12 22a4.63 4.63 0 0 0 3.648-1.758a27.2 27.2 0 0 1-7.296 0M18.75 9v.704c0 .845.24 1.671.692 2.374l1.108 1.723c1.011 1.574.239 3.713-1.52 4.21a25.8 25.8 0 0 1-14.06 0c-1.759-.497-2.531-2.636-1.52-4.21l1.108-1.723a4.4 4.4 0 0 0 .693-2.374V9c0-3.866 3.022-7 6.749-7s6.75 3.134 6.75 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="h-full overflow-y-auto scrollbar-hide flex-1 bg-black/30">
     <router-outlet />
   </div>
 
 
   <!-- Links Navigation -->
-  <div class="grid grid-cols-5 py-5 items-center border-t">
+  <div class="grid grid-cols-5 py-4 items-center">
     <a href="" class="">
       <button class="flex flex-col items-center justify-center gap-1 w-full hover:bg-gray-700">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"
@@ -15,7 +43,7 @@
             d="M20.568 2.812a8.25 8.25 0 0 1 6.864 0c7.766 3.556 13.551 8.642 16.337 11.386c1.502 1.479 2.305 3.451 2.418 5.486c.138 2.507.313 6.573.313 11.159c0 3.236-.087 6.212-.187 8.564a7.145 7.145 0 0 1-6.927 6.854c-3.478.12-8.647.239-15.386.239s-11.908-.12-15.386-.239a7.145 7.145 0 0 1-6.927-6.854a204 204 0 0 1-.187-8.564c0-4.586.175-8.652.313-11.159c.113-2.035.916-4.007 2.418-5.486c2.786-2.744 8.572-7.83 16.337-11.386M16 36a2 2 0 1 0 0 4h16a2 2 0 1 0 0-4z"
             clip-rule="evenodd" />
         </svg>
-        <p class="text-sm font-medium">Inicio</p>
+        <p class="text-xs uppercase font-medium">Inicio</p>
       </button>
     </a>
 
@@ -25,12 +53,13 @@
           <path fill="currentColor"
             d="M7.5 9a2 2 0 0 1 2 2c0 .965-.592 1.73-1.411 2.23C7.27 13.728 6.175 14 5 14s-2.27-.272-3.089-.77C1.091 12.73.5 11.965.5 11a2 2 0 0 1 2-2zm6.653.008A1.5 1.5 0 0 1 15.5 10.5c0 .771-.47 1.409-1.102 1.83c-.635.424-1.485.67-2.398.67c-.7 0-1.36-.146-1.917-.403c.258-.463.416-.996.416-1.597c0-.759-.284-1.45-.749-1.979q.122-.02.25-.021h4zM5 2.5A2.75 2.75 0 1 1 5 8a2.75 2.75 0 0 1 0-5.5m7.002.997a2.252 2.252 0 1 1 0 4.503a2.252 2.252 0 0 1 0-4.503" />
         </svg>
-        <p class="text-sm font-medium">Comunidad</p>
+        <p class="text-xs uppercase font-medium">Comunidad</p>
       </button>
     </a>
 
     <div class="flex items-center justify-center">
-      <button class="size-12 rounded-full bg-primary flex items-center justify-center shadow-primary/30 hover:shadow-primary/40">
+      <button
+        class="size-12 rounded-full bg-primary flex items-center justify-center shadow-primary/30 hover:shadow-primary/40">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
           class="lucide lucide-plus-icon lucide-plus text-black size-7">
@@ -50,7 +79,7 @@
               d="m13.299 3.148l8.634 14.954a1.5 1.5 0 0 1-1.299 2.25H3.366a1.5 1.5 0 0 1-1.299-2.25l8.634-14.954c.577-1 2.02-1 2.598 0M12 15a1 1 0 1 0 0 2a1 1 0 0 0 0-2m0-7a1 1 0 0 0-.993.883L11 9v4a1 1 0 0 0 1.993.117L13 13V9a1 1 0 0 0-1-1" />
           </g>
         </svg>
-        <p class="text-sm font-medium">Denuncias</p>
+        <p class="text-xs uppercase font-medium">Denuncias</p>
       </button>
     </a>
 
@@ -64,7 +93,7 @@
               d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10s10-4.477 10-10S17.523 2 12 2M8.5 9.5a3.5 3.5 0 1 1 7 0a3.5 3.5 0 0 1-7 0m9.758 7.484A7.99 7.99 0 0 1 12 20a7.99 7.99 0 0 1-6.258-3.016C7.363 15.821 9.575 15 12 15s4.637.821 6.258 1.984" />
           </g>
         </svg>
-        <p class="text-sm font-medium">Perfil</p>
+        <p class="text-xs uppercase font-medium">Perfil</p>
       </button>
     </a>
   </div>
