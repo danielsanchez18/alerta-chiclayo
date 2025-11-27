@@ -20,6 +20,7 @@
   --font-primary: "Inter", sans-serif;
 
   --color-primary: #d5e301;
+  --color-secondary: #3d3d3d;
   /* --color-primary-light: #75b37f; */
   /* --color-primary-dark: #396f42; */
 
@@ -32,6 +33,17 @@
   [&::-webkit-scrollbar-track]:bg-gray-100
   [&::-webkit-scrollbar-thumb]:rounded-full
   [&::-webkit-scrollbar-thumb]:bg-gray-300;
+}
+
+/* Ocultar scrollbar en navegadores Webkit (Chrome, Safari) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ocultar scrollbar en Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none; /* IE y Edge */
 }
 
 :root {

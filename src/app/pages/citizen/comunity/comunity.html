@@ -1,0 +1,44 @@
+<!-- Page Comnunnity -->
+<section class="p-5 flex flex-col gap-y-5">
+
+  <!-- Links -->
+  <div class="flex items-center gap-x-2 overflow-x-auto scrollbar-hide">
+
+    <a routerLink="/comunidad/:id/general"
+      routerLinkActive="bg-yellow-300 text-black font-semibold"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="text-nowrap rounded-full text-sm font-medium bg-white/20 px-4 py-2">General</a>
+
+    <a routerLink="/comunidad/:id/alertas"
+      routerLinkActive="bg-yellow-300 text-black font-semibold"
+      class="text-nowrap rounded-full text-sm font-medium bg-white/20 px-4 py-2">Alertas</a>
+
+    <a routerLink="/comunidad/:id/denuncias"
+      routerLinkActive="bg-yellow-300 text-black font-semibold"
+      class="text-nowrap rounded-full text-sm font-medium bg-white/20 px-4 py-2">Denuncias</a>
+
+      <a routerLink="/comunidad/:id/recordatorios"
+      routerLinkActive="bg-yellow-300 text-black font-semibold"
+      class="text-nowrap rounded-full text-sm font-medium bg-white/20 px-4 py-2">Recordatorios</a>
+
+    <a routerLink="/comunidad/:id/publicaciones"
+      routerLinkActive="bg-yellow-300 text-black font-semibold"
+      class="text-nowrap rounded-full text-sm font-medium bg-white/20 px-4 py-2">Publicaciones</a>
+
+    <a routerLink="/comunidad/:id/telefonos"
+      routerLinkActive="bg-yellow-300 text-black font-semibold"
+      class="text-nowrap rounded-full text-sm font-medium bg-white/20 px-4 py-2">Teléfonos de Seguridad</a>
+
+    <a routerLink="/comunidad/:id/informacion"
+      routerLinkActive="bg-yellow-300 text-black font-semibold"
+      class="text-nowrap rounded-full text-sm font-medium bg-white/20 px-4 py-2">Informacion</a>
+  </div>
+
+  <!-- Content -->
+  <div class="flex-1">
+    <router-outlet></router-outlet>
+  </div>
+
+
+</section>
+<!-- End Page Community -->

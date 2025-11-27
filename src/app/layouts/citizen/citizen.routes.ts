@@ -9,6 +9,40 @@ export const CITIZEN_ROUTES: Routes = [
       {
         path: '',
         loadComponent: () => import('@pages/citizen/overview/overview').then(m => m.PageCitizenOverview)
+      },
+      {
+        path: 'comunidad',
+        loadComponent: () => import('@pages/citizen/comunity/comunity').then(m => m.PageCitizenComunity),
+        children:[
+          {
+            path: ':id/general',
+            loadComponent: () => import('@pages/citizen/comunity/overview/overview').then(m => m.Overview)
+          },
+          {
+            path: ':id/alertas',
+            loadComponent: () => import('@pages/citizen/comunity/alerts/alerts').then(m => m.PageCitizenComunityAlerts)
+          },
+          {
+            path: ':id/denuncias',
+            loadComponent: () => import('@pages/citizen/comunity/reports/reports').then(m => m.PageCitizenComunityReports)
+          },
+          {
+            path: ':id/recordatorios',
+            loadComponent: () => import('@pages/citizen/comunity/reminders/reminders').then(m => m.PageCitizenComunityReminders)
+          },
+          {
+            path: ':id/publicaciones',
+            loadComponent: () => import('@pages/citizen/comunity/posts/posts').then(m => m.PageCitizenComunityPosts)
+          },
+          {
+            path: ':id/telefonos',
+            loadComponent: () => import('@pages/citizen/comunity/phones/phones').then(m => m.PageCitizenComunityPhones)
+          },
+          {
+            path: ':id/informacion',
+            loadComponent: () => import('@pages/citizen/comunity/info/info').then(m => m.PageCitizenComunityInfo)
+          }
+        ]
       }
     ]
   }
