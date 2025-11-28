@@ -1,10 +1,11 @@
-<section class="h-dvh flex flex-col">
+<section class="h-dvh flex flex-col relative">
 
   <!-- Breadcrumb -->
   <div class="flex w-full items-center justify-between py-5 gap-x-5 px-5">
 
     <!-- Menu -->
-    <button class="">
+    <button class="" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-offcanvas-left"
+      data-hs-overlay="#hs-offcanvas-left">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="lucide lucide-menu-icon lucide-menu size-5 text-white">
@@ -13,6 +14,12 @@
         <path d="M4 19h16" />
       </svg>
     </button>
+
+    <div id="hs-offcanvas-left"
+      class="hs-overlay hs-overlay-open:translate-x-0 hidden -translate-x-full fixed top-0 start-0 transition-all duration-300 transform h-full max-w-xs w-full z-80 bg-white border-s border-gray-200 dark:bg-neutral-800 dark:border-neutral-700"
+      role="dialog" tabindex="-1" aria-labelledby="hs-offcanvas-left-label">
+      <component-shared-sidebar />
+    </div>
 
     <!-- Title -->
     <p class="text-sm font-medium uppercase tracking-widest">Alerta Chiclayo</p>

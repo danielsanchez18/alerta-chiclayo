@@ -1,0 +1,38 @@
+<!-- Page Search Comunity -->
+<section class="grid gap-y-5 p-5">
+
+  <!-- Input Search Comunity -->
+  <div class="flex items-center gap-x-5">
+    <input type="text" id="email" name="email" placeholder="Buscar comunidad"
+      class="text-sm w-full px-5 py-3 rounded-full bg-white/10 border border-white/20 focus:border-primary focus:outline-primary placeholder:text-white/50 text-white transition" />
+
+    <button class="text-sm uppercase font-semibold text-primary">
+      Buscar
+    </button>
+  </div>
+
+  <h2 class="text-xl font-medium mt-5">Comunidades cercanas a tu zona</h2>
+
+  <!-- Mapa de comunidades cercanas -->
+  <!-- TODO: Agregar mapa de comunidades cercanas -->
+  <div class="pt-[25rem] rounded-xl bg-white/10 px-5">
+  </div>
+
+  <!-- Grid de Comnunidades cercanas -->
+  <div class="max-w-full grid">
+    <!-- Title -->
+
+    <div class="flex items-center gap-x-3 overflow-x-auto scrollbar-hide">
+      <component-citizen-comunity-card class="min-w-[18rem] max-w-[18rem]" />
+      <component-citizen-comunity-card class="min-w-[18rem] max-w-[18rem]" />
+      <component-citizen-comunity-card class="min-w-[18rem] max-w-[18rem]" />
+    </div>
+  </div>
+
+  <!-- Crear Comunidad Link -->
+  <div class="text-center p-10">
+    <p class="">¿No encuentras una comunidad adecuada?</p>
+    <a href="/crear-comunidad" class=" text-primary font-semibold underline">Crea una nueva comunidad</a>
+  </div>
+</section>
+<!-- End Page Search Comunity -->

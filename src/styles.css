@@ -49,3 +49,25 @@
 :root {
   @apply font-primary bg-black/90 text-white;
 }
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 30px #d5e301
+  }
+
+  50% {
+    box-shadow: 0 0 80px #d5e301
+  }
+
+  100% {
+    box-shadow: 0 0 30px #d5e301
+  }
+}
+
+.alert-button {
+  transition: all .3s ease;
+}
+
+.pulse {
+  animation: pulse 3s infinite ease-in-out
+}

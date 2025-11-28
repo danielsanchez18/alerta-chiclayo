@@ -1,0 +1,29 @@
+<!-- Page Search Police Station -->
+<section class="grid gap-y-5 p-5">
+
+  <!-- Input Search Police Station -->
+  <div class="flex items-center gap-x-5">
+    <input type="text" id="email" name="email" placeholder="Buscar comisaría por nombre"
+      class="text-sm w-full px-5 py-3 rounded-full bg-white/10 border border-white/20 focus:border-primary focus:outline-primary placeholder:text-white/50 text-white transition" />
+
+    <button class="text-sm uppercase font-semibold text-primary">
+      Buscar
+    </button>
+  </div>
+
+  <h2 class="text-xl font-medium mt-5">Comisarias cercanas a tu zona</h2>
+
+  <!-- Mapa de comisarias cercanas -->
+  <!-- TODO: Agregar mapa de comisarias cercanas -->
+  <div class="pt-[25rem] rounded-xl bg-white/10 px-5">
+  </div>
+
+  <!-- Grid de Comisarias cercanas -->
+  <div class="w-full grid">
+    <component-citizen-police-station-card />
+    <component-citizen-police-station-card />
+    <component-citizen-police-station-card />
+  </div>
+
+</section>
+<!-- End Page Search Police Station -->

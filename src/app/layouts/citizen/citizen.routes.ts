@@ -72,6 +72,31 @@ export const CITIZEN_ROUTES: Routes = [
       {
         path: 'notificaciones',
         loadComponent: () => import('@pages/citizen/notifications/notifications').then(m => m.PageCitizenNotifications)
+      },
+      {
+        path: 'buscar-comunidad',
+        loadComponent: () => import('@pages/citizen/comunity/search/search').then(m => m.PageCitizenComunitySearch)
+      },
+      {
+        path: 'crear-comunidad',
+        loadComponent: () => import('@pages/citizen/comunity/create/create').then(m => m.PageCitizenComunityCreate)
+      },
+      {
+        path: 'comisarias',
+        children: [
+          {
+            path: '',
+            loadComponent: () => import('@pages/citizen/police-station/search/search').then(m => m.PageCitizenPoliceStationSearch)
+          },
+          {
+            path: ':id',
+            loadComponent: () => import('@pages/citizen/police-station/details/details').then(m => m.PageCitizenPoliceStationDetails)
+          }
+        ]
+      },
+      {
+        path: 'zonas',
+        loadComponent: () => import('@pages/citizen/zone-map/zone-map').then(m => m.PageCitizenZoneMap)
       }
     ]
   }
