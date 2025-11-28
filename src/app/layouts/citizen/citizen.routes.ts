@@ -58,8 +58,20 @@ export const CITIZEN_ROUTES: Routes = [
           {
             path: 'registrar',
             loadComponent: () => import('@pages/citizen/reports/register/register').then(m => m.PageCitizenReportsRegister)
+          },
+          {
+            path: ':id',
+            loadComponent: () => import('@pages/citizen/reports/details/details').then(m => m.PageCitizenReportsDetails)
           }
         ]
+      },
+      {
+        path: 'mi-perfil',
+        loadComponent: () => import('@pages/citizen/profile/overview/overview').then(m => m.PageCitizenProfileOverview)
+      },
+      {
+        path: 'notificaciones',
+        loadComponent: () => import('@pages/citizen/notifications/notifications').then(m => m.PageCitizenNotifications)
       }
     ]
   }

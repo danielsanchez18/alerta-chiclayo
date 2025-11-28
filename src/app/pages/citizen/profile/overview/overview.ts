@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'page-citizen-reports-register',
+  selector: 'page-citizen-profile-overview',
   imports: [
     RouterModule
   ],
-  templateUrl: './register.html',
+  templateUrl: './overview.html',
 })
-export class PageCitizenReportsRegister { }
+export class PageCitizenProfileOverview { }

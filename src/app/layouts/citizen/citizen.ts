@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'layout-citizen',
   imports: [
-    RouterOutlet
+    RouterModule
   ],
   templateUrl: './citizen.html',
 })

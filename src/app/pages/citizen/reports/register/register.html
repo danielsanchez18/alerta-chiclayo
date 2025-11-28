@@ -1,1 +1,54 @@
-<p>register works!</p>,
+<div class="px-5 py-10 min-h-full flex flex-col gap-y-10">
+
+  <textarea name="" id="" rows="10"
+    class="w-full px-4 py-3 text-white bg-transparent border-0 border-transparent rounded-lg ring-0 focus:ring-0 focus:outline-none focus:border-transparent resize-none scrollbar-hide"
+    placeholder="Agrega comentarios de tu denuncia aquí..."></textarea>
+
+  <div class="space-y-2">
+
+    <a routerLink="../foto" class="flex items-center justify-center w-full text-sm rounded-full px-4 py-3 bg-white/10 gap-x-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-camera">
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+        <circle cx="12" cy="13" r="3" />
+      </svg>
+      Adjuntar imagen
+    </a>
+
+    <a routerLink="../audio" class="flex items-center justify-center w-full text-sm rounded-full px-4 py-3 bg-white/10 gap-x-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-audio-lines">
+        <path d="M2 10v3" />
+        <path d="M6 6v11" />
+        <path d="M10 3v18" />
+        <path d="M14 8v7" />
+        <path d="M18 5v13" />
+        <path d="M22 10v3" />
+      </svg>
+      Grabar audio
+    </a>
+
+    <a routerLink="../mapa" class="flex items-center justify-center w-full text-sm rounded-full px-4 py-3 bg-white/10 gap-x-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        class="lucide lucide-map-pin">
+        <path
+          d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+      Enviar ubicación actual
+    </a>
+
+  </div>
+  <a routerLink="../1" class="flex items-center justify-center w-full rounded-full text-black bg-primary px-4 py-3 gap-x-2 uppercase font-semibold">
+    Reportar
+  </a>
+
+  <p class="text-xs text-center">Tu denuncia será vista por todos los miembros de tu comunidad y el personal de
+    seguridad.
+    POR FAVOR NO COMPARTAS INFORMACION INDEBIDA.
+  </p>
+
+</div>
