@@ -6,7 +6,9 @@
     <div class="flex items-center">
       <!-- Title -->
       <h2 class="text-xl font-medium mb-5">Alertas de Emergencia</h2>
-      <a href="/comunidad/:id/alertas" class="ml-auto bg-primary px-3 py-2 text-xs uppercase font-semibold rounded-full tracking-widest">VER MÁS</a>
+      <a href="/comunidad/:id/alertas"
+        class="ml-auto bg-primary text-black px-3 py-2 text-xs uppercase font-semibold rounded-full tracking-widest">VER
+        MÁS</a>
     </div>
 
     <!-- Grid Posts -->
@@ -28,10 +30,10 @@
     <h2 class="text-xl font-medium mb-5">Publicaciones de la comunidad</h2>
 
     <!-- Grid Posts -->
-    <div class="flex items-center gap-x-5 overflow-x-auto whitespace-nowrap scrollbar-hide">
-      <component-citizen-posts-card  />
-      <component-citizen-posts-card  />
-      <component-citizen-posts-card  />
+    <div class="flex items-center gap-x-5 overflow-x-auto scrollbar-hide">
+      <component-citizen-posts-card class="min-w-[18rem] max-w-[18rem]" />
+      <component-citizen-posts-card class="min-w-[18rem] max-w-[18rem]" />
+      <component-citizen-posts-card class="min-w-[18rem] max-w-[18rem]" />
     </div>
   </div>
 
@@ -45,11 +47,11 @@
     <!-- Title -->
     <h2 class="text-xl font-medium mb-5">Noticias recientes</h2>
 
-    <!-- Grid Posts -->
+    <!-- Grid News -->
     <div class="flex items-center gap-x-5 overflow-x-auto scrollbar-hide">
-      <component-citizen-news-card />
-      <component-citizen-news-card />
-      <component-citizen-news-card />
+      <component-citizen-news-card class="min-w-[18rem] max-w-[18rem]" />
+      <component-citizen-news-card class="min-w-[18rem] max-w-[18rem]" />
+      <component-citizen-news-card class="min-w-[18rem] max-w-[18rem]" />
     </div>
   </div>
 

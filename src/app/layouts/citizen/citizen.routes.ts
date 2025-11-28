@@ -47,6 +47,19 @@ export const CITIZEN_ROUTES: Routes = [
             loadComponent: () => import('@pages/citizen/comunity/info/info').then(m => m.PageCitizenComunityInfo)
           }
         ]
+      },
+      {
+        path: 'denuncias',
+        children: [
+          {
+            path: '',
+            loadComponent: () => import('@pages/citizen/reports/overview/overview').then(m => m.PageCitizenReportsOverview)
+          },
+          {
+            path: 'registrar',
+            loadComponent: () => import('@pages/citizen/reports/register/register').then(m => m.PageCitizenReportsRegister)
+          }
+        ]
       }
     ]
   }
