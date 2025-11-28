@@ -1,0 +1,38 @@
+<section class="grid gap-y-10 px-5 py-10">
+
+  <div class="grid gap-y-10 text-center">
+    <p class="uppercase font-bold text-sm text-black bg-primary rounded-full px-4 py-2.5 w-fit mx-auto">Alerta Activa
+    </p>
+    <p class="text-balance">Emergencia reportada el 11 de noviembre a las 11:57 AM</p>
+  </div>
+
+  <div class="grid gap-y-5">
+    <p class="text-sm uppercase font-semibold text-primary">Reportada por:</p>
+
+    <div class="flex items-center gap-x-3 p-3 bg-white/10 rounded-xl">
+      <div class="size-10 rounded-full contain-content bg-white/10"></div>
+      <div>
+        <p>Daniel Sánchez</p>
+        <p class="text-sm text-white/60 uppercase">Miembro de la comunidad</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid gap-y-5">
+    <button type="button" class="uppercase font-bold text-sm text-black bg-primary rounded-full px-4 py-2.5 w-fit mx-auto"
+      aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-scale-animation-modal" data-hs-overlay="#hs-scale-animation-modal">
+      ver ubicación
+    </button>
+
+    <a href="/comunidad/:id/telefonos"
+      class="uppercase font-medium text-sm text-white bg-white/10 rounded-full px-4 py-2.5 w-fit mx-auto">
+      ver contactos de seguridad
+    </a>
+  </div>
+
+
+  <!-- Modal de ubicacion -->
+  <div id="hs-scale-animation-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-scale-animation-modal-label">
+    <component-citizen-alerts-location />
+  </div>
+</section>

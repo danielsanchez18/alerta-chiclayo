@@ -97,6 +97,14 @@ export const CITIZEN_ROUTES: Routes = [
       {
         path: 'zonas',
         loadComponent: () => import('@pages/citizen/zone-map/zone-map').then(m => m.PageCitizenZoneMap)
+      },
+      {
+        path: 'reglas',
+        loadComponent: () => import('@pages/citizen/terms/terms').then(m => m.PageCitizenTerms)
+      },
+      {
+        path: 'alertas/:id',
+        loadComponent: () => import('@pages/citizen/alerts/details/details').then(m => m.PageCitizenAlertsDetails)
       }
     ]
   }
