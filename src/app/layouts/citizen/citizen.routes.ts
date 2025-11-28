@@ -15,6 +15,10 @@ export const CITIZEN_ROUTES: Routes = [
         loadComponent: () => import('@pages/citizen/comunity/comunity').then(m => m.PageCitizenComunity),
         children:[
           {
+            path: ':id',
+            redirectTo: ':id/general',
+          },
+          {
             path: ':id/general',
             loadComponent: () => import('@pages/citizen/comunity/overview/overview').then(m => m.Overview)
           },
