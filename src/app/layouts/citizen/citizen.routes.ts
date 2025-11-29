@@ -49,6 +49,14 @@ export const CITIZEN_ROUTES: Routes = [
         ]
       },
       {
+        path: 'publicacion/crear',
+        loadComponent: () => import('@pages/citizen/comunity/create-post/create-post').then(m => m.PageCitizenComunityCreatePost)
+      },
+      {
+        path: 'publicacion/:id',
+        loadComponent: () => import('@pages/citizen/comunity/details-post/details-post').then(m => m.PageCitizenComunityDetailsPost)
+      },
+      {
         path: 'denuncias',
         children: [
           {

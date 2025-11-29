@@ -1,0 +1,61 @@
+<!-- Page Create Post -->
+<section class="grid gap-y-5 p-5">
+
+  <form class="grid gap-y-7">
+
+    <!-- Input Title -->
+    <div class="grid gap-y-2">
+
+      <label for="title" class="text-sm capitalize  tracking-wider">Título:</label>
+
+      <input type="text" id="title" name="title" placeholder="Ingrese el título de la publicación"
+        class="text-sm w-full px-5 py-3 rounded-lg bg-white/10 border border-white/10 focus:border-primary focus:outline-primary placeholder:text-white/50 text-white transition" />
+    </div>
+
+    <!-- Input Descripcion -->
+    <div class="grid gap-y-2">
+
+      <label for="content" class="text-sm capitalize tracking-wider">Contenido:</label>
+
+      <textarea name="content" id="content" rows="5"
+        class="w-full px-5 text-sm py-3 text-white bg-white/10 border border-white/10 rounded-lg focus:border-primary focus:outline-primary placeholder:text-white/50 resize-none scrollbar-hide"
+        placeholder="Escribe aquí tu contenido"></textarea>
+    </div>
+
+    <!-- Input File -->
+    <div class="grid gap-y-2">
+
+      <label for="file" class="text-sm capitalize tracking-wider">Imagen (opcional):</label>
+
+      <div data-hs-file-upload='{
+        "url": "/upload",
+        "maxFiles": 1,
+        "singleton": true
+      }'>
+        <template data-hs-file-upload-preview="">
+          <div class="flex items-center w-full">
+            <span class="overflow-hidden truncate grow-0" data-hs-file-upload-file-name=""></span>
+            <span class="grow-0">.</span>
+            <span class="grow-0" data-hs-file-upload-file-ext=""></span>
+          </div>
+        </template>
+
+        <button type="button"
+          class="relative flex w-full overflow-hidden text-sm rounded-lg shadow-sm focus:outline-none focus:z-10 focus:border-0 disabled:opacity-50 disabled:pointer-events-none">
+          <span class="h-full px-4 py-2 text-black bg-primary text-nowrap">Explorar</span>
+          <span class="flex h-full px-4 py-2 overflow-hidden group grow" data-hs-file-upload-previews="">
+            <span class="group-has-[div]:hidden">Agregar archivo</span>
+          </span>
+          <span class="absolute top-0 left-0 w-full h-full" data-hs-file-upload-trigger=""></span>
+        </button>
+      </div>
+    </div>
+
+    <a href="/publicacion/:id"
+      class="text-center mt-10 flex text-sm items-center justify-center w-full rounded-full text-black bg-primary px-4 py-3 gap-x-2 uppercase font-semibold">
+      Crear publicacion
+    </a>
+  </form>
+
+</section>
+<!-- End Page Create Post -->
