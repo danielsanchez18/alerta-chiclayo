@@ -26,8 +26,7 @@
     <span class="text-sm uppercase font-semibold tracking-wider">Buscar comunidad</span>
   </a>
 
-  <a href="/comisarias"
-    class="px-4 py-3 rounded-full bg-white/10 flex items-center gap-x-3 w-full hover:bg-white/20">
+  <a href="/comisarias" class="px-4 py-3 rounded-full bg-white/10 flex items-center gap-x-3 w-full hover:bg-white/20">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
       class="lucide lucide-siren-icon lucide-siren size-5">
@@ -68,12 +67,29 @@
   <a href="/auth/ingresar"
     class="px-4 py-3 rounded-full bg-white/10 flex items-center gap-x-3 w-full hover:bg-white/20">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out size-5">
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="lucide lucide-log-out-icon lucide-log-out size-5">
       <path d="m16 17 5-5-5-5" />
       <path d="M21 12H9" />
       <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
     </svg>
     <span class="text-sm uppercase font-semibold tracking-wider">cerrar sesión</span>
   </a>
+
+  <!-- Boton driver.js -->
+  <button
+    (click)="startTour()"
+    class="text-start px-4 py-3 rounded-full bg-white/10 flex items-center gap-x-3 w-full hover:bg-white/20"
+    aria-label="Close" data-hs-overlay="#hs-offcanvas-left">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      class="lucide lucide-circle-question-mark-icon lucide-circle-question-mark size-5">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+      <path d="M12 17h.01" />
+    </svg>
+    <span class="text-sm uppercase font-semibold tracking-wider">¿cómo usarlo?</span>
+  </button>
+
 
 </div>
