@@ -3,9 +3,9 @@
 
   <!-- Alertas de Emergencia -->
   <div class="max-w-full">
-    <div class="flex items-center">
+    <div class="flex items-center mb-5">
       <!-- Title -->
-      <h2 class="text-xl font-medium mb-5">Alertas de Emergencia</h2>
+      <h2 class="text-xl font-medium ">Alertas de Emergencia</h2>
       <a href="/comunidad/:id/alertas"
         class="ml-auto bg-primary text-black px-3 py-2 text-xs uppercase font-semibold rounded-full tracking-widest">VER
         MÁS</a>
@@ -27,7 +27,13 @@
   <!-- Publicaciones recientes -->
   <div class="max-w-full grid">
     <!-- Title -->
-    <h2 class="text-xl font-medium mb-5">Publicaciones de la comunidad</h2>
+    <div class="flex items-center gap-x-5 mb-5">
+      <!-- Title -->
+      <h2 class="text-xl font-medium line-clamp-1">Publicaciones de la comunidad</h2>
+      <a href="/comunidad/:id/publicaciones"
+        class="ml-auto bg-primary text-nowrap text-black px-3 py-2 text-xs uppercase font-semibold rounded-full tracking-widest">
+        ver MÁS</a>
+    </div>
 
     <!-- Grid Posts -->
     <div class="flex items-center gap-x-5 overflow-x-auto scrollbar-hide">
@@ -45,7 +51,13 @@
   <!-- Noticias recientes -->
   <div class="max-w-full grid ">
     <!-- Title -->
-    <h2 class="text-xl font-medium mb-5">Noticias recientes</h2>
+    <div class="flex items-center mb-5">
+      <!-- Title -->
+      <h2 class="text-xl font-medium">Noticias recientes</h2>
+      <a href="/comunidad/:id/noticias"
+        class="ml-auto bg-primary text-nowrap text-black px-3 py-2 text-xs uppercase font-semibold rounded-full tracking-widest">
+        ver MÁS</a>
+    </div>
 
     <!-- Grid News -->
     <div class="flex items-center gap-x-5 overflow-x-auto scrollbar-hide">
