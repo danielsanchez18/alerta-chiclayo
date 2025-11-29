@@ -1,8 +1,8 @@
 <!-- Reminder Card -->
-<a href="" class="grid gap-y-2 py-3 hover:bg-white/10">
+<div class="grid gap-y-2 py-5 hover:bg-white/10">
 
   <div>
-    <h5>Reunión Comunitaria el 15 de Julio</h5>
+    <h5>{{ reminder().title }}</h5>
     <div class="flex items-center gap-x-2 my-1">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -10,9 +10,9 @@
         <path d="M12 6v6l4 2" />
         <circle cx="12" cy="12" r="10" />
       </svg>
-      <p class="text-xs text-white/60">Programado para el 27 de nov 25</p>
+      <p class="text-xs text-white/60">Programado para el {{ reminder().scheduledDate | date: 'd \'de\' MMM \'de\' y' }}</p>
     </div>
-    <p class="text-xs text-white/60">Reunion con tema a tratar sobre la instalación de alumbrado público</p>
+    <p class="text-xs text-white/60">{{ reminder().description }}</p>
   </div>
 
-</a>
+</div>

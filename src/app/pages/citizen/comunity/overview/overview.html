@@ -13,9 +13,9 @@
 
     <!-- Grid Posts -->
     <div class="">
-      <component-citizen-alerts-card />
-      <component-citizen-alerts-card />
-      <component-citizen-alerts-card />
+      @for (alert of alerts; track alert.id) {
+        <component-citizen-alerts-card [alert]="alert" />
+      }
     </div>
   </div>
 
@@ -36,10 +36,10 @@
     </div>
 
     <!-- Grid Posts -->
-    <div class="flex items-center gap-x-5 overflow-x-auto scrollbar-hide">
-      <component-citizen-posts-card class="min-w-[18rem] max-w-[18rem]" />
-      <component-citizen-posts-card class="min-w-[18rem] max-w-[18rem]" />
-      <component-citizen-posts-card class="min-w-[18rem] max-w-[18rem]" />
+    <div class="flex gap-x-5 overflow-x-auto scrollbar-hide">
+      @for (post of posts; track post.id) {
+        <component-citizen-posts-card [post]="post" class="min-w-[18rem] max-w-[18rem]" />
+      }
     </div>
   </div>
 
@@ -60,10 +60,10 @@
     </div>
 
     <!-- Grid News -->
-    <div class="flex items-center gap-x-5 overflow-x-auto scrollbar-hide">
-      <component-citizen-news-card class="min-w-[18rem] max-w-[18rem]" />
-      <component-citizen-news-card class="min-w-[18rem] max-w-[18rem]" />
-      <component-citizen-news-card class="min-w-[18rem] max-w-[18rem]" />
+    <div class="flex gap-x-5 overflow-x-auto scrollbar-hide">
+      @for (newsItem of news; track newsItem.id) {
+        <component-citizen-news-card [news]="newsItem" class="min-w-[18rem] max-w-[18rem]" />
+      }
     </div>
   </div>
 

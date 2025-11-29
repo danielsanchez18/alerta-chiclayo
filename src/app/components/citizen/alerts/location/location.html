@@ -18,19 +18,35 @@
       </button>
     </div>
     <div class="p-4 overflow-y-auto grid gap-y-5 text-center">
-      <!-- TODO: Mapa de la ubicación reportada -->
-      <div class="bg-white/10 rounded-lg w-full h-[20rem]">
+      <!-- Mapa de la ubicación -->
+      <div class="rounded-lg w-full h-[20rem] overflow-hidden relative">
+        @if (errorMessage()) {
+          <div class="absolute inset-0 flex items-center justify-center bg-red-500/20 z-10">
+            <p class="text-red-400">{{ errorMessage() }}</p>
+          </div>
+        }
+        @if (!mapLoaded()) {
+          <div class="absolute inset-0 flex items-center justify-center bg-white/10">
+            <p>Cargando mapa...</p>
+          </div>
+        }
+        <div id="alertMap" class="w-full h-full"></div>
       </div>
 
-      <p class="text-sm font-semibold">Urb. Los Pinos Nro 1443 - 14455.21155.33225 -C</p>
+      <div class="text-sm space-y-2">
+        <p class="font-semibold">{{ locationAddress() }}</p>
+        @if (userLocation()) {
+          <p class="text-xs text-white/60">{{ userLocation()!.lat.toFixed(5) }}, {{ userLocation()!.lng.toFixed(5) }}</p>
+        }
+      </div>
     </div>
     <div class="flex justify-center items-center gap-x-2 py-3 px-4">
-      <a
-        href=""
-        data-hs-overlay="#hs-scale-animation-modal"
+      <button
+        (click)="openInGoogleMaps()"
+        [disabled]="!userLocation()"
         class="text-center py-2 px-3 inline-flex items-center gap-x-2 text-black text-sm font-medium rounded-full border border-transparent bg-primary hover:bg-primary/80 focus:outline-hidden focus:bg-primary/80 disabled:opacity-50 disabled:pointer-events-none">
         Abrir en Google Maps
-      </a>
+      </button>
       <button type="button"
         class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-bold rounded-full border border-neutral-700 bg-neutral-800 text-white shadow-2xs hover:bg-neutral-700 focus:outline-hidden focus:bg-neutral-700 disabled:opacity-50 disabled:pointer-events-none"
         data-hs-overlay="#hs-scale-animation-modal">

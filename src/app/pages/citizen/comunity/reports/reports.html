@@ -6,10 +6,10 @@
     <h2 class="text-xl font-medium mb-5">Denuncias Realizadas</h2>
 
     <!-- Grid Posts -->
-    <div class="grid gap-y-2">
-      <component-citizen-reports-card />
-      <component-citizen-reports-card />
-      <component-citizen-reports-card />
+    <div class="grid divide-y divide-white/20">
+      @for (report of reports; track report.id) {
+        <component-citizen-reports-card [report]="report" />
+      }
     </div>
   </div>
 

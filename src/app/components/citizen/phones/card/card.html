@@ -1,13 +1,17 @@
-<button class="py-2 hover:bg-white/10 flex items-center gap-x-3 text-start w-full">
+<div class="py-2 hover:bg-white/10 flex items-center gap-x-3 text-start w-full">
 
-  <div class="min-w-10 w-10 h-10 rounded-full bg-gray-200"></div>
-
-  <div class="w-full space-y-1">
-    <p class="font-semibold">Bomberos</p>
-    <p class="text-sm text-white/60">+51 936245721</p>
+  <div class="min-w-10 w-10 h-10 rounded-full bg-gray-200 overflow-hidden">
+    @if (phone().avatar) {
+      <img [src]="phone().avatar" [alt]="phone().name" class="w-full h-full object-cover" />
+    }
   </div>
 
-  <button class="mr-2">
+  <div class="w-full space-y-1">
+    <p class="font-semibold">{{ phone().name }}</p>
+    <p class="text-sm text-white/60">{{ phone().phone }}</p>
+  </div>
+
+  <button (click)="callPhone(phone().phone)" class="mr-2">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
       class="lucide lucide-phone-icon lucide-phone text-primary size-5">
@@ -16,12 +20,14 @@
     </svg>
   </button>
 
-  <button>
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail text-primary size-5">
-      <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-      <rect x="2" y="4" width="20" height="16" rx="2" />
-    </svg>
-  </button>
+  @if (phone().email) {
+    <button (click)="sendEmail(phone().email!)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail text-primary size-5">
+        <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+        <rect x="2" y="4" width="20" height="16" rx="2" />
+      </svg>
+    </button>
+  }
 
-</button>
+</div>

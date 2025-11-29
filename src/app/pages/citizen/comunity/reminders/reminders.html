@@ -6,10 +6,10 @@
     <h2 class="text-xl font-medium mb-5">Recordatorios</h2>
 
     <!-- Grid Posts -->
-    <div class="grid gap-y-2">
-      <component-citizen-reminders-card />
-      <component-citizen-reminders-card />
-      <component-citizen-reminders-card />
+    <div class="grid divide-y divide-white/20">
+      @for (reminder of reminders; track reminder.id) {
+        <component-citizen-reminders-card [reminder]="reminder" />
+      }
     </div>
   </div>
 

@@ -13,7 +13,7 @@ export const CITIZEN_ROUTES: Routes = [
       {
         path: 'comunidad',
         loadComponent: () => import('@pages/citizen/comunity/comunity').then(m => m.PageCitizenComunity),
-        children:[
+        children: [
           {
             path: ':id',
             redirectTo: ':id/general',
@@ -66,6 +66,18 @@ export const CITIZEN_ROUTES: Routes = [
           {
             path: 'registrar',
             loadComponent: () => import('@pages/citizen/reports/register/register').then(m => m.PageCitizenReportsRegister)
+          },
+          {
+            path: 'registrar/foto',
+            loadComponent: () => import('@pages/citizen/reports/add-photo/add-photo').then(m => m.PageCitizenReportsAddPhoto)
+          },
+          {
+            path: 'registrar/audio',
+            loadComponent: () => import('@pages/citizen/reports/add-audio/add-audio').then(m => m.PageCitizenReportsAddAudio)
+          },
+          {
+            path: 'registrar/mapa',
+            loadComponent: () => import('@pages/citizen/reports/add-location/add-location').then(m => m.PageCitizenReportsAddLocation)
           },
           {
             path: ':id',

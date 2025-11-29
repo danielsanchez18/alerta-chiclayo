@@ -2,7 +2,7 @@
 <section class="grid gap-y-10 py-5">
 
   <div class="flex gap-x-3">
-    <h3 class="text-lg font-semibold line-clamp-2">Comunidad "Los Pinos de Cix"</h3>
+    <h3 class="text-lg font-semibold line-clamp-2">{{ communityName }}</h3>
     <button class="ml-auto">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -16,7 +16,7 @@
   </div>
 
   <div class="grid grid-cols-2 gap-x-3">
-    <a routerLink=""
+    <a routerLink="../telefonos"
       class="px-4 w-full h-32 rounded-lg flex flex-col justify-center gap-y-2 items-center bg-white/10 hover:bg-white/15 transition duration-300 text-center">
 
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -44,49 +44,27 @@
     </a>
   </div>
 
-  <div class="grid">
-    <!-- Role -->
-    <h5 class="text-sm uppercase font-semibold text-primary tracking-widest mb-2">Administradores</h5>
+  @for (section of memberSections; track section.title) {
+    <div class="grid">
+      <!-- Role -->
+      <h5 class="text-sm uppercase font-semibold text-primary tracking-widest mb-2">{{ section.title }}</h5>
 
-    <!-- Members List -->
-    <button class="py-3 text-start flex items-center gap-x-3 hover:bg-white/10">
-      <div class="size-8 min-w-8 rounded-full bg-white"></div>
-      <div class="w-full">
-        <p class="text-sm">José Alberto Durán Lopez</p>
-        <p class="text-xs uppercase text-white/60">JEFE DE COMUNIDAD</p>
-      </div>
-    </button>
-
-    <button class="py-3 text-start flex items-center gap-x-3 hover:bg-white/10">
-      <div class="size-8 min-w-8 rounded-full bg-white"></div>
-      <div class="w-full">
-        <p class="text-sm">José Alberto Durán Lopez</p>
-        <p class="text-xs uppercase text-white/60">JEFE DE COMUNIDAD</p>
-      </div>
-    </button>
-  </div>
-
-  <div class="grid">
-    <!-- Role -->
-    <h5 class="text-sm uppercase font-semibold text-primary tracking-widest mb-2">Administradores</h5>
-
-    <!-- Members List -->
-    <button class="py-3 text-start flex items-center gap-x-3 hover:bg-white/10">
-      <div class="size-8 min-w-8 rounded-full bg-white"></div>
-      <div class="w-full">
-        <p class="text-sm">José Alberto Durán Lopez</p>
-        <p class="text-xs uppercase text-white/60">JEFE DE COMUNIDAD</p>
-      </div>
-    </button>
-
-    <button class="py-3 text-start flex items-center gap-x-3 hover:bg-white/10">
-      <div class="size-8 min-w-8 rounded-full bg-white"></div>
-      <div class="w-full">
-        <p class="text-sm">José Alberto Durán Lopez</p>
-        <p class="text-xs uppercase text-white/60">JEFE DE COMUNIDAD</p>
-      </div>
-    </button>
-  </div>
+      <!-- Members List -->
+      @for (member of section.members; track member.id) {
+        <button class="py-3 text-start flex items-center gap-x-3 hover:bg-white/10">
+          <div class="size-8 min-w-8 rounded-full bg-gray-200 overflow-hidden">
+            @if (member.avatar) {
+              <img [src]="member.avatar" [alt]="member.name" class="w-full h-full object-cover" />
+            }
+          </div>
+          <div class="w-full">
+            <p class="text-sm">{{ member.name }}</p>
+            <p class="text-xs uppercase text-white/60">{{ member.role }}</p>
+          </div>
+        </button>
+      }
+    </div>
+  }
 
 </section>
 <!-- End Info Section -->

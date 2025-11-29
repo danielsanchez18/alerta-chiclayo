@@ -1,18 +1,19 @@
 <!-- General Section -->
 <section class="grid gap-y-10 py-5">
 
-  <!-- Teléfonos de Seguridad -->
-  <div class="max-w-full">
-    <!-- Title -->
-    <h2 class="text-xl font-medium mb-5">Teléfonos de Seguridad</h2>
+  @for (section of phoneSections; track section.title) {
+    <div class="max-w-full">
+      <!-- Title -->
+      <h2 class="text-xl font-medium mb-5">{{ section.title }}</h2>
 
-    <!-- Grid Posts -->
-    <div class="grid gap-y-2">
-      <component-citizen-phones-card />
-      <component-citizen-phones-card />
-      <component-citizen-phones-card />
+      <!-- Grid Phones -->
+      <div class="grid gap-y-2">
+        @for (phone of section.phones; track phone.id) {
+          <component-citizen-phones-card [phone]="phone" />
+        }
+      </div>
     </div>
-  </div>
+  }
 
 </section>
 

@@ -21,9 +21,9 @@
 
     <!-- Grid Posts -->
     <div class="grid gap-y-2">
-      <component-citizen-phones-card />
-      <component-citizen-phones-card />
-      <component-citizen-phones-card />
+      @for (phone of phones; track phone.id) {
+        <component-citizen-phones-card [phone]="phone" />
+      }
     </div>
   </div>
 

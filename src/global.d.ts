@@ -10,11 +10,11 @@ declare global {
     // $: typeof import("jquery");
     // jQuery: typeof import("jquery");
     // DataTable;
-    // Dropzone;
+    Dropzone;
     // VanillaCalendarPro;
 
     // ApexCharts;
-    // Lodash;
+    Lodash;
 
 
     // Preline UI

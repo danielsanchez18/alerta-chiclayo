@@ -8,9 +8,9 @@
 
     <!-- Grid Posts -->
     <div class="grid gap-y-2">
-      <component-citizen-alerts-card />
-      <component-citizen-alerts-card />
-      <component-citizen-alerts-card />
+      @for (alert of alerts; track alert.id) {
+        <component-citizen-alerts-card [alert]="alert" />
+      }
     </div>
   </div>
 

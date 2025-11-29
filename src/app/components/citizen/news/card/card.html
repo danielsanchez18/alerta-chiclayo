@@ -3,27 +3,25 @@
 
   <!-- News Image -->
   <div class="h-48 bg-gray-200 rounded-xl overflow-hidden w-full">
-    <img src="https://ojo-publico.com/sites/default/files/styles/imagen_745x419/public/2024-03/000921495W.jpg?h=99795127&itok=2r_nviKX" alt="Post Image" class="w-full h-full object-cover" />
+    <img [src]="news().image" [alt]="news().title" class="w-full h-full object-cover" />
   </div>
 
   <!-- News Content -->
   <div class="flex flex-col gap-y-2">
     <div class="flex items-center gap-x-3">
       <div class="w-7 h-7 rounded-full bg-gray-300 overflow-hidden">
-        <img src="https://avatars.githubusercontent.com/u/148911330?v=4"
-          alt="Author Avatar" class="w-full h-full object-cover" />
+        <img [src]="news().author.avatar"
+          [alt]="news().author.name + ' Avatar'" class="w-full h-full object-cover" />
       </div>
-      <span class="text-sm text-white/60 line-clamp-1">Juan Pérez</span>
+      <span class="text-sm text-white/60 line-clamp-1">{{ news().author.name }}</span>
       <div class="size-1.5 rounded-full bg-white/60"></div>
-      <span class="text-sm text-white/60">Hace 2 horas</span>
+      <span class="text-sm text-white/60">{{ getTimeAgo(news().createdAt) }}</span>
     </div>
     <h3 class="text-lg font-semibold text-white">
-      Robo en la Calle 5
+      {{ news().title }}
     </h3>
     <p class="text-white/60 text-sm line-clamp-3">
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati necessitatibus, odio repellendus deleniti
-      dicta voluptates eaque nobis nemo! Laboriosam debitis provident placeat minus doloribus, ut recusandae officia
-      eveniet mollitia dolore!
+      {{ news().description }}
     </p>
   </div>
 

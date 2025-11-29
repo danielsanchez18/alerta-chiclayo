@@ -1,24 +1,34 @@
 <!-- Alert Card -->
-<a href="/denuncias/:id" class="grid gap-y-2 py-3 hover:bg-white/10">
+<a [routerLink]="['/denuncias', report().id]" class="grid gap-y-2 py-5 hover:bg-white/10">
+
+  <!-- Imagen opcional -->
+  @if (report().image) {
+    <div class="h-40 bg-gray-200 rounded-xl overflow-hidden w-full">
+      <img [src]="report().image" [alt]="report().title" class="w-full h-full object-cover" />
+    </div>
+  }
 
   <div class="flex items-center gap-x-3">
     <div class="w-7 h-7 rounded-full bg-gray-300 overflow-hidden">
-      <img src="https://avatars.githubusercontent.com/u/148911330?v=4" alt="Author Avatar"
+      <img [src]="report().author.avatar" [alt]="report().author.name + ' Avatar'"
         class="w-full h-full object-cover" />
     </div>
-    <span class="text-sm text-white/60 line-clamp-1">Juan Pérez</span>
+    <span class="text-sm text-white/60 line-clamp-1">{{ report().author.name }}</span>
     <div class="size-1.5 rounded-full bg-white/60"></div>
-    <span class="text-sm text-white/60">Hace 2 horas</span>
+    <span class="text-sm text-white/60">{{ getTimeAgo(report().createdAt) }}</span>
   </div>
 
-  <h3 class="text-lg font-semibold text-white">
-    Vandalismo en Calle Izaga con Balta
-  </h3>
+  <div class="flex items-center gap-x-3">
+    <h3 class="text-lg font-semibold text-white">
+      {{ report().title }}
+    </h3>
+    <span [ngClass]="getTypeColor(report().type)" class="ml-auto px-3 py-1 text-xs font-semibold rounded-full">
+      {{ report().type }}
+    </span>
+  </div>
 
   <p class="text-sm text-white/60 line-clamp-3">
-    Se reporta acto de vandalismo en la intersección de Calle Izaga con Balta, donde se han
-    encontrado grafitis en las paredes y daños a la propiedad pública. Se solicita la colaboración
-    de la comunidad para identificar a los responsables y prevenir futuros incidentes.
+    {{ report().description }}
   </p>
 
 </a>
