@@ -1,11 +1,29 @@
-<a href="/comisarias/:id"
-  class="py-3 hover:bg-white/10 flex gap-x-4">
+<a [href]="'/comisarias/' + station().id"
+  class="py-3 hover:bg-white/10 flex gap-x-4 rounded-lg transition">
 
-  <div class="size-10 rounded-lg bg-white/10"></div>
+  <div class="size-10 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary size-5">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+  </div>
 
-  <div class="">
-    <h4 class="line-clamp-1 lean">Comisaría "La Victoria"</h4>
-    <p class="text-sm text-white/60 line-clamp-2">500 metros - La Victoria N° 342</p>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-start justify-between gap-2">
+      <h4 class="line-clamp-1 font-semibold">{{ station().name }}</h4>
+      @if (station().isOpen24h) {
+        <span class="text-xs bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full shrink-0">24h</span>
+      }
+    </div>
+    <p class="text-sm text-white/60 line-clamp-1">
+      @if (station().distance) {
+        <span class="text-primary">{{ station().distance }} km</span> •
+      }
+      {{ station().address }}
+    </p>
+    <p class="text-xs text-white/50 mt-1">
+      📍 {{ station().district }}
+    </p>
   </div>
 
 </a>

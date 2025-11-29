@@ -1,15 +1,48 @@
 <section class="flex flex-col items-center justify-center py-10 px-10 space-y-10">
 
-  <button class="flex flex-col items-center justify-center space-y-2 rounded-full size-60 bg-secondary focus:bg-primary">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-audio-lines size-16"><path d="M2 10v3"/><path d="M6 6v11"/><path d="M10 3v18"/><path d="M14 8v7"/><path d="M18 5v13"/><path d="M22 10v3"/></svg>
-    <p>00:00</p>
+  <button 
+    (click)="toggleRecording()"
+    type="button"
+    [class]="isRecording() ? 'bg-red-500' : 'bg-secondary hover:bg-secondary/80'"
+    class="flex flex-col items-center justify-center space-y-2 rounded-full size-60 transition-colors">
+    @if (isRecording()) {
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-16 animate-pulse">
+        <rect width="6" height="6" x="9" y="9" rx="1"/>
+      </svg>
+    } @else {
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-16">
+        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" x2="12" y1="19" y2="22"/>
+      </svg>
+    }
+    <p class="text-white font-mono text-xl">{{ recordingTime() }}</p>
+    <p class="text-white/60 text-sm">{{ isRecording() ? 'Grabando...' : 'Presiona para grabar' }}</p>
   </button>
+
+  @if (audioUrl()) {
+    <div class="w-full space-y-4">
+      <div class="bg-white/10 rounded-xl p-4">
+        <audio [src]="audioUrl()!" controls class="w-full">
+          Tu navegador no soporta el elemento de audio.
+        </audio>
+      </div>
+      
+      <button 
+        (click)="deleteRecording()"
+        type="button"
+        class="w-full font-semibold text-center rounded-full bg-red-500 hover:bg-red-600 px-5 py-3 text-white transition">
+        Eliminar grabación
+      </button>
+    </div>
+  }
 
   <div class="w-full grid">
     <a href="denuncias/registrar"
-      class="w-full font-semibold text-center rounded-full bg-primary px-5 py-3 text-black">
+      [class.opacity-50]="!audioUrl()"
+      [class.pointer-events-none]="!audioUrl()"
+      class="w-full font-semibold text-center rounded-full bg-primary hover:bg-primary/90 px-5 py-3 text-black transition">
       Enviar
     </a>
-
   </div>
 </section>

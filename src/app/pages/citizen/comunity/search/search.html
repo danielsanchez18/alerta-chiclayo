@@ -3,30 +3,69 @@
 
   <!-- Input Search Comunity -->
   <div class="flex items-center gap-x-5">
-    <input type="text" id="email" name="email" placeholder="Buscar comunidad"
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearchChange($event)"
+      placeholder="Buscar comunidad por nombre, distrito..."
       class="text-sm w-full px-5 py-3 rounded-full bg-white/10 border border-white/20 focus:border-primary focus:outline-primary placeholder:text-white/50 text-white transition" />
 
-    <button class="text-sm uppercase font-semibold text-primary">
-      Buscar
-    </button>
+    <!-- <div class="text-sm font-semibold text-primary">
+      {{ filteredCommunities().length }}
+    </div> -->
   </div>
 
-  <h2 class="text-xl font-medium mt-5">Comunidades cercanas a tu zona</h2>
+  @if (filteredCommunities().length > 0) {
+    <div class="bg-white/5 rounded-xl p-3 text-sm">
+      <p class="text-white/70">
+        📍 Mostrando <span class="text-primary font-semibold">{{ filteredCommunities().length }}</span>
+        {{ filteredCommunities().length === 1 ? 'comunidad' : 'comunidades' }}
+        @if (searchQuery()) {
+          <span> para "<span class="text-white font-semibold">{{ searchQuery() }}</span>"</span>
+        } @else if (userLocation()) {
+          <span> cercanas a tu ubicación</span>
+        }
+      </p>
+    </div>
+  }
+
+  <h2 class="text-xl font-medium mt-5">Mapa de comunidades</h2>
 
   <!-- Mapa de comunidades cercanas -->
-  <!-- TODO: Agregar mapa de comunidades cercanas -->
-  <div class="pt-[25rem] rounded-xl bg-white/10 px-5">
+  <div class="h-[25rem] rounded-xl overflow-hidden relative">
+    @if (!mapLoaded()) {
+      <div class="flex items-center justify-center h-full bg-white/5 rounded-xl">
+        <div class="text-center">
+          <div class="loader mx-auto mb-3"></div>
+          <p class="text-white/60 text-sm">Cargando mapa...</p>
+        </div>
+      </div>
+    }
+    <div id="communities-map" class="h-full w-full" [class.hidden]="!mapLoaded()"></div>
   </div>
 
-  <!-- Grid de Comnunidades cercanas -->
+  <!-- Grid de Comunidades cercanas -->
   <div class="max-w-full grid">
-    <!-- Title -->
+    <h3 class="text-lg font-medium mb-3">Comunidades disponibles</h3>
 
-    <div class="flex items-center gap-x-3 overflow-x-auto scrollbar-hide">
-      <component-citizen-comunity-card class="min-w-[18rem] max-w-[18rem]" />
-      <component-citizen-comunity-card class="min-w-[18rem] max-w-[18rem]" />
-      <component-citizen-comunity-card class="min-w-[18rem] max-w-[18rem]" />
-    </div>
+    @if (filteredCommunities().length > 0) {
+      <div class="flex items-center gap-x-3 overflow-x-auto scrollbar-hide pb-2">
+        @for (community of filteredCommunities(); track community.id) {
+          <component-citizen-comunity-card
+            [community]="community"
+            class="min-w-[18rem] max-w-[18rem]" />
+        }
+      </div>
+    } @else {
+      <div class="text-center py-10 bg-white/5 rounded-xl">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-white/20">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+        <p class="text-white/60">No se encontraron comunidades</p>
+        <p class="text-white/40 text-sm mt-2">Intenta con otros términos de búsqueda</p>
+      </div>
+    }
   </div>
 
   <!-- Crear Comunidad Link -->
@@ -35,4 +74,22 @@
     <a href="/crear-comunidad" class=" text-primary font-semibold underline">Crea una nueva comunidad</a>
   </div>
 </section>
+
+<style>
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid;
+    border-color: #d5e301 transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
 <!-- End Page Search Comunity -->

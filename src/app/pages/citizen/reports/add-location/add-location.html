@@ -26,20 +26,38 @@
 
 <div class="flex flex-col h-full gap-6 px-4 py-4">
 
+  @if (userLocation()) {
+    <div class="bg-white/10 rounded-xl p-4 space-y-2">
+      <div class="flex items-start gap-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0 mt-1">
+          <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <div class="flex-1">
+          <p class="text-white font-semibold mb-1">Tu ubicación</p>
+          <p class="text-white/70 text-sm">{{ address() }}</p>
+          <p class="text-white/50 text-xs mt-1">
+            {{ userLocation()!.lat.toFixed(6) }}, {{ userLocation()!.lng.toFixed(6) }}
+          </p>
+        </div>
+      </div>
+      <p class="text-white/60 text-xs">💡 Arrastra el marcador para ajustar la ubicación</p>
+    </div>
+  }
 
-  <div class="h-[80%] overflow-hidden rounded-xl">
+  <div class="h-[70%] overflow-hidden rounded-xl">
 
-    <div *ngIf="locationLoaded == false" class="flex flex-col items-center justify-center h-full gap-5">
+    <div *ngIf="!locationLoaded()" class="flex flex-col items-center justify-center h-full gap-5 bg-white/5 rounded-xl">
       <span class="loader"></span>
-      <small>Cargando mapa...</small>
+      <small class="text-white">Obteniendo tu ubicación...</small>
     </div>
 
-    <div *ngIf="locationLoaded" id="map" class="h-full overflow-hidden text-white border rounded-xl">
+    <div *ngIf="locationLoaded()" id="map" class="h-full overflow-hidden text-white border border-white/20 rounded-xl">
     </div>
 
   </div>
 
-  <a href="/denuncias/registrar" class="flex items-center justify-center gap-3 p-3 text-black rounded-full bg-primary focus:bg-primary">
+  <a href="/denuncias/registrar" class="flex items-center justify-center gap-3 p-3 text-black rounded-full bg-primary hover:bg-primary/90 transition focus:bg-primary">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin">
       <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />

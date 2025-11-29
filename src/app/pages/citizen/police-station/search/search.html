@@ -3,27 +3,87 @@
 
   <!-- Input Search Police Station -->
   <div class="flex items-center gap-x-5">
-    <input type="text" id="email" name="email" placeholder="Buscar comisaría por nombre"
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearchChange($event)"
+      placeholder="Buscar comisaría por nombre, distrito..."
       class="text-sm w-full px-5 py-3 rounded-full bg-white/10 border border-white/20 focus:border-primary focus:outline-primary placeholder:text-white/50 text-white transition" />
 
-    <button class="text-sm uppercase font-semibold text-primary">
-      Buscar
-    </button>
+    <!-- <div class="text-sm font-semibold text-primary">
+      {{ filteredStations().length }}
+    </div> -->
   </div>
 
-  <h2 class="text-xl font-medium mt-5">Comisarias cercanas a tu zona</h2>
+  @if (filteredStations().length > 0) {
+    <div class="bg-white/5 rounded-xl p-3 text-sm">
+      <p class="text-white/70">
+        🚨 Mostrando <span class="text-primary font-semibold">{{ filteredStations().length }}</span>
+        {{ filteredStations().length === 1 ? 'comisaría' : 'comisarías' }}
+        @if (searchQuery()) {
+          <span> para "<span class="text-white font-semibold">{{ searchQuery() }}</span>"</span>
+        } @else if (userLocation()) {
+          <span> cercanas a tu ubicación</span>
+        }
+      </p>
+    </div>
+  }
+
+  <h2 class="text-xl font-medium mt-5">Mapa de comisarías</h2>
 
   <!-- Mapa de comisarias cercanas -->
-  <!-- TODO: Agregar mapa de comisarias cercanas -->
-  <div class="pt-[25rem] rounded-xl bg-white/10 px-5">
+  <div class="h-[25rem] rounded-xl overflow-hidden relative">
+    @if (!mapLoaded()) {
+      <div class="flex items-center justify-center h-full bg-white/5 rounded-xl">
+        <div class="text-center">
+          <div class="loader mx-auto mb-3"></div>
+          <p class="text-white/60 text-sm">Cargando mapa...</p>
+        </div>
+      </div>
+    }
+    <div id="police-stations-map" class="h-full w-full" [class.hidden]="!mapLoaded()"></div>
   </div>
 
   <!-- Grid de Comisarias cercanas -->
   <div class="w-full grid">
-    <component-citizen-police-station-card />
-    <component-citizen-police-station-card />
-    <component-citizen-police-station-card />
+    <h3 class="text-lg font-medium mb-3">Comisarías disponibles</h3>
+
+    @if (filteredStations().length > 0) {
+      <div class="divide-y divide-white/5">
+        @for (station of filteredStations(); track station.id) {
+          <component-citizen-police-station-card
+            [station]="station" />
+        }
+      </div>
+    } @else {
+      <div class="text-center py-10 bg-white/5 rounded-xl">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-white/20">
+          <circle cx="11" cy="11" r="8"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+        <p class="text-white/60">No se encontraron comisarías</p>
+        <p class="text-white/40 text-sm mt-2">Intenta con otros términos de búsqueda</p>
+      </div>
+    }
   </div>
 
 </section>
+
+<style>
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid;
+    border-color: #d5e301 transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
 <!-- End Page Search Police Station -->

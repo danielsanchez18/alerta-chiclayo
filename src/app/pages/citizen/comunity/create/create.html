@@ -27,12 +27,16 @@
 
       <label for="departamento" class="text-sm capitalize tracking-wider">Departamento:</label>
 
-      <select name="departamento" id="departamento" class="bg-white/10 text-white/60 text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary">
+      <select 
+        name="departamento" 
+        id="departamento" 
+        [(ngModel)]="selectedDepartamento"
+        (ngModelChange)="onDepartamentoChange($event)"
+        class="bg-white/10 text-white text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary">
         <option class="bg-black/80 text-white/60" value="">Seleccione un departamento</option>
-        <option class="bg-black/80 text-white/60" value="Lambayeque">Lambayeque</option>
-        <option class="bg-black/80 text-white/60" value="Tumbes">Tumbes</option>
-        <option class="bg-black/80 text-white/60" value="Cuzco">Cuzco</option>
-        <option class="bg-black/80 text-white/60" value="Lima">Lima</option>
+        @for (dept of departamentosList(); track dept) {
+          <option class="bg-black/80 text-white" [value]="dept">{{ dept }}</option>
+        }
       </select>
     </div>
 
@@ -41,11 +45,17 @@
 
       <label for="provincia" class="text-sm capitalize tracking-wider">Provincia:</label>
 
-      <select name="provincia" id="provincia" class="bg-white/10 text-white/60 text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary">
+      <select 
+        name="provincia" 
+        id="provincia" 
+        [(ngModel)]="selectedProvincia"
+        (ngModelChange)="onProvinciaChange($event)"
+        [disabled]="!selectedDepartamento()"
+        class="bg-white/10 text-white text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary disabled:opacity-50">
         <option class="bg-black/80 text-white/60" value="">Seleccione una Provincia</option>
-        <option class="bg-black/80 text-white/60" value="Lambayeque">Chiclayo</option>
-        <option class="bg-black/80 text-white/60" value="Tumbes">Ferreñafe</option>
-        <option class="bg-black/80 text-white/60" value="Cuzco">Lambayeque</option>
+        @for (prov of provinciasList(); track prov) {
+          <option class="bg-black/80 text-white" [value]="prov">{{ prov }}</option>
+        }
       </select>
     </div>
 
@@ -54,34 +64,83 @@
 
       <label for="distrito" class="text-sm capitalize tracking-wider">Distrito:</label>
 
-      <select name="distrito" id="distrito" class="bg-white/10 text-white/60 text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary">
+      <select 
+        name="distrito" 
+        id="distrito" 
+        [(ngModel)]="selectedDistrito"
+        (ngModelChange)="onDistritoChange($event)"
+        [disabled]="!selectedProvincia()"
+        class="bg-white/10 text-white text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary disabled:opacity-50">
         <option class="bg-black/80 text-white/60" value="">Seleccione un Distrito</option>
-        <option class="bg-black/80 text-white/60" value="Lambayeque">Chiclayo</option>
-        <option class="bg-black/80 text-white/60" value="Tumbes">Monsefú</option>
-        <option class="bg-black/80 text-white/60" value="Cuzco">Reque</option>
-        <option class="bg-black/80 text-white/60" value="Cuzco">Motupe</option>
-        <option class="bg-black/80 text-white/60" value="Cuzco">Eten</option>
+        @for (dist of distritosList(); track dist) {
+          <option class="bg-black/80 text-white" [value]="dist">{{ dist }}</option>
+        }
       </select>
     </div>
 
-    <!-- TODO: Mapa de ubicacion -->
+    <!-- Mapa de delimitación -->
     <div class="grid gap-y-2">
-      <label class="text-sm tracking-wider">Seleccione su delimitacion:</label>
-      <select name="delimitacion" id="delimitacion" class="bg-white/10 text-white/60 text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary">
-        <option class="bg-black/80 text-white/60" value="500">500m</option>
-        <option class="bg-black/80 text-white/60" value="1000">1 KM</option>
-        <option class="bg-black/80 text-white/60" value="1500">1.5 KM</option>
-        <option class="bg-black/80 text-white/60" value="2000">2 KM</option>
+      <label class="text-sm tracking-wider">Seleccione su delimitación:</label>
+      
+      <select 
+        name="delimitacion" 
+        id="delimitacion" 
+        [(ngModel)]="selectedDelimitacion"
+        (ngModelChange)="onDelimitacionChange($event)"
+        class="bg-white/10 text-white text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary">
+        <option class="bg-black/80 text-white" [value]="500">500 metros</option>
+        <option class="bg-black/80 text-white" [value]="1000">1 kilómetro</option>
+        <option class="bg-black/80 text-white" [value]="1500">1.5 kilómetros</option>
+        <option class="bg-black/80 text-white" [value]="2000">2 kilómetros</option>
+        <option class="bg-black/80 text-white" [value]="3000">3 kilómetros</option>
       </select>
-      <div class="pt-[20rem] rounded-lg bg-white/10 mt-3"></div>
+
+      <div class="bg-white/5 rounded-lg p-3 text-sm">
+        <p class="text-white/70">
+          📍 Radio de cobertura: <span class="text-primary font-semibold">{{ selectedDelimitacion() }}m</span>
+        </p>
+        <p class="text-white/50 text-xs mt-1">
+          💡 Arrastra el marcador para ajustar el centro de tu comunidad
+        </p>
+      </div>
+      
+      <div class="h-[20rem] rounded-lg overflow-hidden relative mt-3">
+        @if (!mapLoaded()) {
+          <div class="flex items-center justify-center h-full bg-white/10">
+            <div class="text-center">
+              <div class="loader mx-auto mb-3"></div>
+              <p class="text-white/60 text-sm">Cargando mapa...</p>
+            </div>
+          </div>
+        }
+        <div id="delimitation-map" class="h-full w-full" [class.hidden]="!mapLoaded()"></div>
+      </div>
     </div>
 
 
 
-    <button class="flex items-center justify-center w-full rounded-full text-black bg-primary px-4 py-3 gap-x-2 uppercase font-semibold">
+    <button type="submit" class="flex items-center justify-center w-full rounded-full text-black bg-primary hover:bg-primary/90 transition px-4 py-3 gap-x-2 uppercase font-semibold">
       Crear comunidad
     </button>
   </form>
 
 </section>
+
+<style>
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid;
+    border-color: #d5e301 transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
 <!-- End Page Create Comunity -->

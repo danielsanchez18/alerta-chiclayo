@@ -1,34 +1,164 @@
 <section class="grid gap-y-5 p-5">
 
-  <h2 class="text-xl font-medium mb-5">Mapa de Zonas</h2>
+  <div>
+    <h2 class="text-xl font-medium mb-2">Mapa de Seguridad por Zonas</h2>
+    <p class="text-sm text-white/60">Analiza el nivel de seguridad en tu zona basado en incidentes reportados</p>
+  </div>
 
-  <!-- TODO: Mapa de ubicacion -->
+  <!-- Controles -->
   <div class="grid gap-y-2">
-    <label class="text-sm tracking-wider">Seleccione su delimitacion:</label>
-    <select name="delimitacion" id="delimitacion"
-      class="bg-white/10 text-white/60 text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary">
-      <option class="bg-black/80 text-white/60" value="500">500m</option>
-      <option class="bg-black/80 text-white/60" value="1000">1 KM</option>
-      <option class="bg-black/80 text-white/60" value="1500">1.5 KM</option>
-      <option class="bg-black/80 text-white/60" value="2000">2 KM</option>
+    <label class="text-sm tracking-wider font-semibold">Radio de análisis:</label>
+    <select 
+      [(ngModel)]="selectedRadius"
+      (ngModelChange)="onRadiusChange($event)"
+      class="bg-white/10 text-white text-sm w-full px-5 py-3 rounded-lg border border-white/10 focus:border-primary focus:outline-primary">
+      <option class="bg-black/80 text-white" [value]="500">500 metros</option>
+      <option class="bg-black/80 text-white" [value]="1000">1 kilómetro</option>
+      <option class="bg-black/80 text-white" [value]="1500">1.5 kilómetros</option>
+      <option class="bg-black/80 text-white" [value]="2000">2 kilómetros</option>
+      <option class="bg-black/80 text-white" [value]="3000">3 kilómetros</option>
     </select>
-    <div class="pt-[20rem] rounded-lg bg-white/10 mt-3"></div>
+    <p class="text-xs text-white/50">💡 Arrastra el marcador azul para analizar diferentes zonas</p>
   </div>
 
-  <!-- Resultados -->
-  <div class="flex gap-x-3 px-5 py-4 rounded-lg bg-white/10">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      class="lucide lucide-user-check-icon lucide-user-check size-6 text-primary">
-      <path d="m16 11 2 2 4-4" />
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-      <circle cx="9" cy="7" r="4" />
-    </svg>
-    <div class="Zona delimitada segura">
-      <p class="text-sm">Comunidades encontradas: <span class="font-semibold text-primary">3</span></p>
-      <p class="text-sm">Reportes este mes: <span class="font-semibold text-primary">Ninguno</span></p>
-      <p class="text-sm">Reportes últimos tres meses: <span class="font-semibold text-primary">1</span></p>
-    </div>
+  <!-- Mapa -->
+  <div class="h-[25rem] rounded-xl overflow-hidden relative">
+    @if (!mapLoaded()) {
+      <div class="flex items-center justify-center h-full bg-white/5">
+        <div class="text-center">
+          <div class="loader mx-auto mb-3"></div>
+          <p class="text-white/60 text-sm">Cargando mapa de seguridad...</p>
+        </div>
+      </div>
+    }
+    <div id="zone-safety-map" class="h-full w-full" [class.hidden]="!mapLoaded()"></div>
   </div>
+
+  <!-- Análisis de zona -->
+  @if (zoneAnalysis()) {
+    <div class="space-y-4">
+      
+      <!-- Nivel de riesgo principal -->
+      <div 
+        class="flex gap-x-4 px-5 py-4 rounded-xl"
+        [style.background-color]="getRiskColor(zoneAnalysis()!.riskLevel) + '20'"
+        [style.border]="'2px solid ' + getRiskColor(zoneAnalysis()!.riskLevel)">
+        <div class="text-4xl">{{ getRiskIcon(zoneAnalysis()!.riskLevel) }}</div>
+        <div class="flex-1">
+          <h3 class="text-lg font-bold mb-1" [style.color]="getRiskColor(zoneAnalysis()!.riskLevel)">
+            {{ getRiskLevelText(zoneAnalysis()!.riskLevel) }}
+          </h3>
+          <p class="text-sm text-white/80">
+            Nivel de riesgo: {{ zoneAnalysis()!.riskPercentage }}%
+          </p>
+          <div class="w-full bg-white/10 rounded-full h-2 mt-2">
+            <div 
+              class="h-2 rounded-full transition-all duration-500"
+              [style.width.%]="zoneAnalysis()!.riskPercentage"
+              [style.background-color]="getRiskColor(zoneAnalysis()!.riskLevel)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Estadísticas -->
+      <div class="grid grid-cols-3 gap-3">
+        <div class="bg-white/5 rounded-xl p-4 text-center">
+          <div class="text-2xl font-bold text-primary">{{ zoneAnalysis()!.totalIncidents }}</div>
+          <div class="text-xs text-white/60 mt-1">Total incidentes</div>
+        </div>
+        <div class="bg-white/5 rounded-xl p-4 text-center">
+          <div class="text-2xl font-bold" 
+            [class.text-red-400]="zoneAnalysis()!.lastMonth > 5"
+            [class.text-yellow-400]="zoneAnalysis()!.lastMonth > 2 && zoneAnalysis()!.lastMonth <= 5"
+            [class.text-green-400]="zoneAnalysis()!.lastMonth <= 2">
+            {{ zoneAnalysis()!.lastMonth }}
+          </div>
+          <div class="text-xs text-white/60 mt-1">Último mes</div>
+        </div>
+        <div class="bg-white/5 rounded-xl p-4 text-center">
+          <div class="text-2xl font-bold text-white/80">{{ zoneAnalysis()!.lastThreeMonths }}</div>
+          <div class="text-xs text-white/60 mt-1">Últimos 3 meses</div>
+        </div>
+      </div>
+
+      <!-- Incidentes por tipo -->
+      @if (Object.keys(zoneAnalysis()!.incidentsByType).length > 0) {
+        <div class="bg-white/5 rounded-xl p-4">
+          <h4 class="font-semibold mb-3">📈 Incidentes por categoría</h4>
+          <div class="space-y-2">
+            @for (type of Object.keys(zoneAnalysis()!.incidentsByType); track type) {
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="size-2 rounded-full bg-primary"></div>
+                  <span class="text-sm">{{ type }}</span>
+                </div>
+                <span class="text-sm font-semibold text-primary">{{ zoneAnalysis()!.incidentsByType[type] }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Recomendaciones -->
+      <div class="bg-white/5 rounded-xl p-4">
+        <h4 class="font-semibold mb-3">🛡️ Recomendaciones de seguridad</h4>
+        <div class="space-y-2">
+          @for (recommendation of zoneAnalysis()!.recommendations; track $index) {
+            <div class="flex items-start gap-3 text-sm">
+              <div class="text-primary shrink-0">•</div>
+              <span class="text-white/80">{{ recommendation }}</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Leyenda del mapa -->
+      <div class="bg-white/5 rounded-xl p-4">
+        <h4 class="font-semibold mb-3">📍 Leyenda del mapa</h4>
+        <div class="grid gap-2 text-xs">
+          <div class="flex items-center gap-2">
+            <div class="size-3 rounded-full bg-blue-500"></div>
+            <span>Tu ubicación (arrastra para mover)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="size-3 rounded-full bg-green-500"></div>
+            <span>Incidente leve (1-2)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="size-3 rounded-full bg-yellow-500"></div>
+            <span>Incidente moderado (3)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="size-3 rounded-full bg-orange-500"></div>
+            <span>Incidente grave (4)</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="size-3 rounded-full bg-red-500"></div>
+            <span>Incidente muy grave (5)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  }
 
 </section>
+
+<style>
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid;
+    border-color: #d5e301 transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>

@@ -16,15 +16,10 @@
 
   <!-- Boton de alerta -->
   <div class="flex items-center justify-center">
-    <button type="button" class="size-72 rounded-full bg-primary"
+    <a href="sms:+51936245721?body=¡EMERGENCIA!%20Necesito%20ayuda%20urgente." class="size-72 rounded-full bg-primary flex items-center justify-center"
       aria-haspopup="dialog" aria-expanded="false" aria-controls="hs-scale-animation-modal" data-hs-overlay="#hs-scale-animation-modal">
       <p class="text-3xl font-black text-black uppercase tracking-widest">¡ALERTA!</p>
-    </button>
-  </div>
-
-  <!-- Modal de alerta enviada -->
-  <div id="hs-scale-animation-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-scale-animation-modal-label">
-    <component-citizen-alerts-success />
+    </a>
   </div>
 
   <!-- Opciones -->
@@ -37,6 +32,11 @@
       </svg>
       Ver comunidad
     </a>
+
+    <!-- Modal de alerta enviada -->
+    <div id="hs-scale-animation-modal" class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-scale-animation-modal-label">
+      <component-citizen-alerts-success />
+    </div>
 
     <a href="/denuncias"
       class="max-w-72 mx-auto w-full flex justify-center items-center font-medium gap-x-3 px-5 py-3 border border-white/15 hover:bg-white/15 transition rounded-full">

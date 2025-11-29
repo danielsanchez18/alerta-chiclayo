@@ -49,6 +49,12 @@ export class LayoutCitizen implements OnInit {
         if (this.navigationHistory[this.navigationHistory.length - 1] !== url) {
           this.navigationHistory.push(url);
         }
+
+        // Recargar la página cuando se navega al home
+        const cleanUrl = url.split('?')[0].split('#')[0];
+        if (cleanUrl === '/' && this.navigationHistory.length > 1) {
+          window.location.reload();
+        }
       });
   }
 
