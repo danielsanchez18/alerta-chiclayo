@@ -85,7 +85,7 @@
 
 
   <div class="grid gap-y-3">
-    <a href="" class="text-white flex items-center justify-center bg-white/10 p-3 rounded-full gap-3 ">
+    <label for="camera-input" class="text-white flex items-center justify-center bg-white/10 p-3 rounded-full gap-3 cursor-pointer hover:bg-white/20 transition">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
         class="lucide lucide-camera">
@@ -93,7 +93,8 @@
         <circle cx="12" cy="13" r="3" />
       </svg>
       <p>Tomar una foto</p>
-    </a>
+    </label>
+    <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
 
     <button type="submit"
       class="flex items-center justify-center w-full mt-2 rounded-full btn-primary px-3 py-3 bg-primary text-black">

@@ -3,25 +3,30 @@
   <div class="grid gap-y-3">
     <h3 class="text-primary uppercase font-semibold">Reporte:</h3>
 
-    <p class="text-white/80">VANDALISMO - Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptates magnam quisquam maxime
-      provident placeat ducimus mollitia. Illo labore eveniet eligendi, repellendus perferendis tenetur non deleniti
-      odit illum laborum eaque.</p>
+    <p class="text-white/80">
+      Robo en tienda de abarrotes ubicada en la Av. Los
+      Eucaliptos N° 123, donde dos individuos
+      desconocidos ingresaron y sustrajeron dinero en efectivo
+      y productos varios.
+    </p>
   </div>
 
   <div class="grid gap-y-3">
     <h3 class="text-primary uppercase font-semibold">Hora:</h3>
 
-    <p class="text-white/80">03:47 PM - 09 nov de 2024.</p>
+    <p class="text-white/80">03:47 PM - 29 nov de 2025.</p>
   </div>
 
   <div class="grid gap-y-3">
     <h3 class="text-primary uppercase font-semibold">realizado por:</h3>
 
     <div class="flex items-center gap-x-3">
-      <div class="size-8 rounded-full bg-white/60"></div>
+      <div class="size-10 rounded-full bg-white/60 contain-content">
+        <img src="https://avatars.githubusercontent.com/u/148911330?v=4" alt="" class="w-full h-full object-contain">
+      </div>
       <div>
-        <p class="text-white">Juan Daniel Sanchez Perez</p>
-        <p class="text-white/60 text-sm font-semibold uppercase">COMUNIDAD LOS PINOS DE CIX</p>
+        <p class="text-white">Daniel Sánchez </p>
+        <p class="text-white/60 text-xs font-semibold uppercase">miembro de la comunidad</p>
       </div>
     </div>
   </div>
@@ -29,22 +34,44 @@
   <div class="grid gap-y-1">
     <h3 class="text-primary uppercase font-semibold mb-2">Anexos:</h3>
 
-    <button class="px-3 py-3 rounded-lg bg-white/10">
+    <button class="px-3 py-3 rounded-lg bg-white/10" aria-haspopup="dialog" aria-expanded="false"
+      aria-controls="hs-scale-animation-modal-photo" data-hs-overlay="#hs-scale-animation-modal-photo">
       <p>Foto de robo 9112024.png</p>
     </button>
-    <button class="px-3 py-3 rounded-lg bg-white/10">
+    <button class="px-3 py-3 rounded-lg bg-white/10" aria-haspopup="dialog" aria-expanded="false"
+      aria-controls="hs-scale-animation-modal-photo" data-hs-overlay="#hs-scale-animation-modal-photo">
       <p>Foto de robo 9112024.png</p>
     </button>
-    <button class="px-3 py-3 rounded-lg bg-white/10">
+    <button class="px-3 py-3 rounded-lg bg-white/10" aria-haspopup="dialog" aria-expanded="false"
+      aria-controls="hs-scale-animation-modal-photo" data-hs-overlay="#hs-scale-animation-modal-photo">
       <p>Foto de robo 9112024.png</p>
     </button>
-    <button class="px-3 py-3 rounded-lg bg-white/10">
+    <button class="px-3 py-3 rounded-lg bg-white/10" aria-haspopup="dialog" aria-expanded="false"
+      aria-controls="hs-scale-animation-modal-audio" data-hs-overlay="#hs-scale-animation-modal-audio">
       <p>Voice Note 1579112024.mp3</p>
     </button>
   </div>
 
-  <button class="flex items-center justify-center w-full rounded-full text-black bg-primary px-4 py-3 gap-x-2 uppercase font-semibold">
+  <button
+    class="flex items-center justify-center w-full rounded-full text-black bg-primary px-4 py-3 gap-x-2 uppercase font-semibold"
+    aria-controls="hs-scale-animation-modal-mapa" data-hs-overlay="#hs-scale-animation-modal-mapa">
     ver ubicación
   </button>
 
+</div>
+
+<!-- Modal de fotos -->
+<div id="hs-scale-animation-modal-photo" class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-scale-animation-modal-photo-label">
+  <component-shared-photo-card />
+</div>
+
+
+<!-- Modal de audio -->
+<div id="hs-scale-animation-modal-audio" class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-scale-animation-modal-audio-label">
+  <component-shared-audio-card />
+</div>
+
+<!-- Modal de ubicacion -->
+<div id="hs-scale-animation-modal-mapa" class="hs-overlay hidden size-full fixed top-0 start-0 z-80 overflow-x-hidden overflow-y-auto pointer-events-none" role="dialog" tabindex="-1" aria-labelledby="hs-scale-animation-modal-mapa-label">
+  <component-citizen-alerts-location />
 </div>

@@ -55,7 +55,7 @@ export class Overview {
       description: 'Se llevará a cabo una reunión de seguridad el próximo viernes. Todos los vecinos están invitados a participar y compartir sus inquietudes.',
       image: 'https://imgs.search.brave.com/VU1N4zEqnL_MAjLCegFf1RwsRgx4N3Jd6QBOkT_RXeg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wYXJx/dWVzYWxlZ3Jlcy5v/cmcvd3AtY29udGVu/dC91cGxvYWRzLzIw/MTcvMDIvcmV1bmlv/bi1zZWd1cmlkYWQt/anVsaW8yMDEyLTMw/MHgyMjUuanBn',
       author: {
-        name: 'Juan Pérez',
+        name: 'Daniel Sánchez',
         avatar: 'https://avatars.githubusercontent.com/u/148911330?v=4'
       },
       createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000)
